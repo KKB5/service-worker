@@ -12,16 +12,43 @@ const registerServiceWorker = async () => {
     return swRegistration
 }
 
+function popupdata() {
+    document.getElementById('modalOverlay').style.display = 'block'
+
+}
+
 const requestNotificationPermission = async () => {
     const permission = await window.Notification.requestPermission()
-    if (permission !== 'granted') {
-        throw new Error('Permission not granted for Notification')
+    console.log(permission)
+    // if (permission !== 'granted') {
+    //     throw new Error('Permission not granted for Notification')
+    // }
+    if (permission === 'granted') {
+        document.getElementById('modalOverlay').style.display = 'none'
     }
+    if (permission === 'denied') {
+        document.getElementById('modalOverlay2').style.display = 'block'
+    }
+    // if (permission === 'default') {
+    //     setTimeout(popupdata, 5000);
+    // }
+}
+
+const notificationPermission = async () => {
+    // navigator.serviceWorker.getRegistrations().then(function (registrations) {
+    //     for (let registration of registrations) {
+    //         registration.unregister();
+    //     }
+    // });
+    // const swRegistration = await registerServiceWorker()
+    const swRegistration = await registerServiceWorker()
+    const permission = await requestNotificationPermission()
 }
 
 const main = async () => {
     check()
     const swRegistration = await registerServiceWorker()
     const permission = await requestNotificationPermission()
+
 }
   // main(); we will not call main in the beginning.

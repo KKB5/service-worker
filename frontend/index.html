@@ -7,11 +7,139 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
     <script src="index.js"></script>
+    <script type="text/javascript">
+        function popupdata() {
+            document.getElementById('modalOverlay2').style.display = 'block'
+
+        }
+        window.onload = function () {
+            document.getElementById('button').onclick = function () {
+                document.getElementById('modalOverlay').style.display = 'none'
+                document.getElementById('modalOverlay2').style.display = 'block'
+
+                // setTimeout(popupdata, 1000);
+            };
+            document.getElementById('button2').onclick = function () {
+                document.getElementById('modalOverlay2').style.display = 'none'
+                setTimeout(popupdata, 3000);
+            };
+            document.getElementById('button3').onclick = function () {
+                document.getElementById('modalOverlay3').style.display = 'none'
+                // setTimeout(popupdata, 1000);
+            };
+            // document.getElementById('allowButton').onclick = function () {
+            //     document.getElementById('modalOverlay').style.display = 'none'
+            // };
+        };
+    </script>
+    <style>
+        #modalOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 99999;
+            height: 100%;
+            width: 100%;
+        }
+
+        #modalOverlay2 {
+            position: fixed;
+            display: none;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 99999;
+            height: 100%;
+            width: 100%;
+        }
+
+        #modalOverlay3 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 99999;
+            height: 100%;
+            width: 100%;
+        }
+
+        .modalPopup {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            width: 50%;
+            padding: 0 0 30px;
+            -webkit-box-shadow: 0 2px 10px 3px rgba(0, 0, 0, .2);
+            -moz-box-shadow: 0 2px 10px 3px rgba(0, 0, 0, .2);
+            box-shadow: 0 2px 10px 3px rgba(0, 0, 0, .2);
+        }
+
+        .modalContent {
+            padding: 0 2em;
+        }
+
+        .headerBar {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+    </style>
+
+
 </head>
 
 <body>
-    <h1>push notification</h1>
-    <button id="permission-btn" onclick="main()">Ask Permission</button>
+    <div id="modalOverlay">
+        <div class="modalPopup">
+            <div class="headerBar">
+                <h1> Allow Push Notification</h1>
+            </div>
+            <div class="modalContent">
+                <h3>Allow notification to get updates</h3>
+
+                <button id="button">Close</button>
+                <button id="allowButton" onclick="main()">Allow</button>
+
+            </div>
+        </div>
+    </div>
+    <div id="modalOverlay2">
+        <div class="modalPopup">
+            <div class="headerBar">
+                <h1>Notification Blocked </h1>
+            </div>
+            <div class="modalContent">
+                <h3>Make sure to allow notification to get Updates</h3>
+
+                <button id="button2">Close</button>
+                <button id="allowButton" onclick="main()">Allow</button>
+
+            </div>
+        </div>
+    </div>
+    <!-- <div id="modalOverlay3">
+        <div class="modalPopup">
+            <div class="headerBar">
+                <h1> Allow Push Notification</h1>
+            </div>
+            <div class="modalContent">
+                <h3>Allow notification to get updates</h3>
+
+                <button id="button3">Close</button>
+                <button id="allowButton" onclick="main()">Allow</button>
+
+            </div>
+        </div>
+    </div> -->
+    <div class="">
+        <h1>push notification</h1>
+        <!-- <button id="permission-btn" onclick="main()">Ask Permission</button> -->
+        <!-- <button id="permission-btn" onclick="notificationPermission()">notification Permission</button> -->
+    </div>
+
 </body>
 
 </html>

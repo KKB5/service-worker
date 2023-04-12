@@ -13,7 +13,7 @@ self.addEventListener('activate', async () => {
     // This will be called only once when the service worker is activated.
     try {
         const applicationServerKey = urlB64ToUint8Array(
-            'BFuR9HeG0NorXJbBQZdIj3Z7euYpwe30T84wrkNo2SLh0rQINiJwhVfHqFvpsC4EocQRmekamvVWMTE-r7N9w6Y'
+            process.env.PublicKey
         )
         const options = { applicationServerKey, userVisibleOnly: true }
         const subscription = await self.registration.pushManager.subscribe(options)
