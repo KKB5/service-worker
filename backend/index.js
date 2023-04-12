@@ -24,7 +24,7 @@ webpush.setVapidDetails(
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
-const dummyDb = { subscription: { "endpoint": "https://fcm.googleapis.com/fcm/send/dFLqpKHB68c:APA91bGqpgVtwGUXxCdDjAPVlQqUt3MovteLvBKxYbMS8FhdwDc45bveZpS3vBng6gB8OUNdOe_t3XOFAbXF8K233bGkyddoNGuwvbf7ZsBNevezrCBEWrnOxc36SY2xPwc_jEQ-Fymn", "expirationTime": null, "keys": { "p256dh": "BPqlxpPD4wtdKrZxfIEyVsbTWgvLshJJiIq8cyngE3gc57WCWFadb_7vexn5WXq5b0-tNi04po1yLshY3SSUfYU", "auth": "ZcwRzXiARQN11OVGaVmK_w" } } }
+const dummyDb = { subscription: { "endpoint": "https://fcm.googleapis.com/fcm/send/cXdOcwtt3qU:APA91bEIsXdyHxMG-TdHDgZO0Qcts2ngDX4CB5EK1OSRqahJUacnngZLiaC5kFPRqDoJ7WzY1_vPnaxioWJiPjDFTJidDsDzYmeasdI_qDRSJ42J5Jc-angFeRubgBkMV24j5e8UXG59", "expirationTime": null, "keys": { "p256dh": "BMGLLEUVEOxjVyGUdljI_rd5npbwbS3aI86cGMXPPqJTs_ImF8isGhNtrPdz6Bf8N7K5FAkpVKIXtjgmZd3vTBA", "auth": "Y5anrFrF28jt2k0JMo0hhQ" } } }
 
 // const saveToDatabase = async (subscription) => {
 //     dummyDb.subscription = subscription
@@ -44,7 +44,7 @@ app.get('/send-notification', (req, res) => {
     const subscription = dummyDb.subscription
     const message = 'Initial push notification test'
     sendNotification(subscription, message)
-    res.json({ message: 'message sent' })
+    res.json({ message: "message sent" })
 })
 
 
