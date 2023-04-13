@@ -13,6 +13,9 @@
 
         }
         window.onload = function () {
+
+            // checkNotification()
+
             document.getElementById('button').onclick = function () {
                 document.getElementById('modalOverlay').style.display = 'none'
                 document.getElementById('modalOverlay2').style.display = 'block'
@@ -101,7 +104,7 @@
                 <h3>Allow notification to get updates</h3>
 
                 <button id="button">Close</button>
-                <button id="allowButton" onclick="main()">Allow</button>
+                <button id="allowButton" onclick="notificationPermission()">Allow</button>
 
             </div>
         </div>
@@ -115,7 +118,7 @@
                 <h3>Make sure to allow notification to get Updates</h3>
 
                 <button id="button2">Close</button>
-                <button id="allowButton" onclick="main()">Allow</button>
+                <button id="allowButton" onclick="notificationPermission()">Allow</button>
 
             </div>
         </div>

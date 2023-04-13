@@ -3,28 +3,28 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const webpush = require('web-push')
 const app = express()
+const env = require('dotenv').config()
 app.use(cors())
 app.use(bodyParser.json())
 
 const port = 4000
 
 const vapidKeys = {
-    publicKey:
-        'BC46GaIHH30osUyPew2mNGCHo4pGmaCY6WEiuimdgFlMX61emEyw9iS9uviCBbNKAiD-E9oWFle3R5lzVV5kMeg',
-    privateKey: '_585fP4nyNIMB5gNk6kE4SDozLITdGjnRYVxXz1PYU',
+    publicKey: process.env.PublicKey,
+    privateKey: process.env.PrivateKey
 }
 
 webpush.setVapidDetails(
     'mailto:janip33184@fitzola.com',
-    vapidKeys.process.env.PublicKey,
-    vapidKeys.process.env.PrivateKey
+    process.env.PublicKey,
+    process.env.PrivateKey
 )
 
 
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
-const dummyDb = { subscription: { "endpoint": "https://fcm.googleapis.com/fcm/send/dnlPg7niK9c:APA91bHjTDh-Ttctg3EhlACoSCbtUCmRIYWrCBwmjEqoU2R3B19Z2oIgYIudebD7jgX2mryxpuRbOyrCCSmTWcSUp5K3J6KHMLHiaTDeQfKriKgOqpTugmtWauz9f5A_PjSqSvIEbm3p", "expirationTime": null, "keys": { "p256dh": "BC6dVk2gHO7m47NHv4xy_KvtTLpIEQxFO_DhF_DXZQfEph2Qejw5osU04a6dG-zIDvI5HiSYEQafuga25V9sRqQ", "auth": "L_EdeH5n4YDQFMErz3T4og" } } }
+const dummyDb = { subscription: { "endpoint": "https://fcm.googleapis.com/fcm/send/civVIfviSHY:APA91bEKVxr0iw0ITi9JtzSow7Et4JmIeCbVA_6sP3voW7_YgpFFhpH9V9rBRVC6liqQc4L379jJFp6hmOFEgY0NIz4Cpiptk-PuehrqgyQai76KECOXlrFBRUHoNusHwfbAROjCvxwu", "expirationTime": null, "keys": { "p256dh": "BOPDTpn1V3U3txrfg7eT2fbJsRJbEu9v3kIdDYGg61jpSKX5mPPP0kTNRXZsRESyqzXokfYNG_QpuZqyHvAleMM", "auth": "JBKQdbsmrUro_HPRLpsK8A" } } }
 
 // const saveToDatabase = async (subscription) => {
 //     dummyDb.subscription = subscription

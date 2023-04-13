@@ -14,7 +14,26 @@ const registerServiceWorker = async () => {
 
 function popupdata() {
     document.getElementById('modalOverlay').style.display = 'block'
+}
 
+const urlB64ToUint8Array = (base64String) => {
+    const padding = '='.repeat((4 - (base64String.length % 4)) % 4)
+    const base64 = (base64String + padding).replace(/\-/g, '+').replace(/_/g, '/')
+    const rawData = atob(base64)
+    const outputArray = new Uint8Array(rawData.length)
+    for (let i = 0; i < rawData.length; ++i) {
+        outputArray[i] = rawData.charCodeAt(i)
+    }
+    return outputArray;
+}
+
+const checkNotification = async () => {
+    const permission = await window.Notification.requestPermission()
+    console.log(permission)
+    if (permission == "granted") {
+        document.getElementById('modalOverlay').style.display = 'none'
+        document.getElementById('modalOverlay2').style.display = 'none'
+    }
 }
 
 const requestNotificationPermission = async () => {
@@ -29,9 +48,18 @@ const requestNotificationPermission = async () => {
     if (permission === 'denied') {
         document.getElementById('modalOverlay2').style.display = 'block'
     }
-    // if (permission === 'default') {
-    //     setTimeout(popupdata, 5000);
-    // }
+    try {
+        const applicationServerKey = urlB64ToUint8Array(
+            'BN7AI0sZhe0I9dBpXmBzjprykIftPImBlI0oTKLyO3ujt8_FBmAD-y0IJPmbtI_WmDzVF6Ad3T-OGPuSWOW-eVc'
+        )
+        const registration = await navigator.serviceWorker.getRegistration('/service.js');
+        console.log(registration)
+        const options = { applicationServerKey, userVisibleOnly: true }
+        const subscription = await registration.pushManager.subscribe(options)
+        console.log(JSON.stringify(subscription))
+    } catch (err) {
+        console.log('Error', err);
+    }
 }
 
 const notificationPermission = async () => {
@@ -41,14 +69,12 @@ const notificationPermission = async () => {
     //     }
     // });
     // const swRegistration = await registerServiceWorker()
-    const swRegistration = await registerServiceWorker()
     const permission = await requestNotificationPermission()
 }
 
 const main = async () => {
     check()
     const swRegistration = await registerServiceWorker()
-    const permission = await requestNotificationPermission()
-
 }
-  // main(); we will not call main in the beginning.
+
+main();
