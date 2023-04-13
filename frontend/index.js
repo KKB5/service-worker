@@ -28,7 +28,7 @@ const urlB64ToUint8Array = (base64String) => {
 }
 
 const checkNotification = async () => {
-    const permission = await window.Notification.requestPermission()
+    const permission = await window.Notification.permission
     console.log(permission)
     if (permission == "granted") {
         document.getElementById('modalOverlay').style.display = 'none'
@@ -44,6 +44,8 @@ const requestNotificationPermission = async () => {
     // }
     if (permission === 'granted') {
         document.getElementById('modalOverlay').style.display = 'none'
+        document.getElementById('modalOverlay2').style.display = 'none'
+
     }
     if (permission === 'denied') {
         document.getElementById('modalOverlay2').style.display = 'block'
