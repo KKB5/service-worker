@@ -24,7 +24,7 @@ webpush.setVapidDetails(
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
-const dummyDb = { subscription: { "endpoint": "https://fcm.googleapis.com/fcm/send/civVIfviSHY:APA91bEKVxr0iw0ITi9JtzSow7Et4JmIeCbVA_6sP3voW7_YgpFFhpH9V9rBRVC6liqQc4L379jJFp6hmOFEgY0NIz4Cpiptk-PuehrqgyQai76KECOXlrFBRUHoNusHwfbAROjCvxwu", "expirationTime": null, "keys": { "p256dh": "BOPDTpn1V3U3txrfg7eT2fbJsRJbEu9v3kIdDYGg61jpSKX5mPPP0kTNRXZsRESyqzXokfYNG_QpuZqyHvAleMM", "auth": "JBKQdbsmrUro_HPRLpsK8A" } } }
+const dummyDb = { subscription: { "endpoint": "https://fcm.googleapis.com/fcm/send/f0BBi1aTLvU:APA91bHPEV-8MgmtUh3kMT1yzFxnPG2jubETG5t1xXpWjCB5dDe1bJuq-a7WOa9IQ_onHdnidhKZgBgdvIK6Crkn1nTxbSNzV1ESLlo4B1RsgoJ1VCjC6S1kboLQW6s1tVPALwpcHBPq", "expirationTime": null, "keys": { "p256dh": "BG9f0yjw3F4GI7vNJHC61coUvjpb5iK_3eBJptlZYyayB7S_mybEn6nFohcedAvk7PzD3dk8r8lU1jVPDbreVI4", "auth": "eNP-uYKqQdcm0E1ulDlcBQ" } } }
 
 // const saveToDatabase = async (subscription) => {
 //     dummyDb.subscription = subscription
